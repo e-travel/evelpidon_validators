@@ -17,7 +17,6 @@ class LessValidatorTest < ActiveSupport::TestCase
     @model.attr2 = 2
     assert_valid_attr1 0
     assert_valid_attr1 1
-    assert_invalid_attr1 2
     assert_invalid_attr1 3
   end
 
@@ -26,7 +25,6 @@ class LessValidatorTest < ActiveSupport::TestCase
     @model.attr2 = today
     assert_valid_attr1 today - 2
     assert_valid_attr1 today - 1
-    assert_invalid_attr1 today
     assert_invalid_attr1 today + 1
   end
 
@@ -34,8 +32,23 @@ class LessValidatorTest < ActiveSupport::TestCase
     @model.attr2 = 'c'
     assert_valid_attr1 'a'
     assert_valid_attr1 'b'
-    assert_invalid_attr1 'c'
     assert_invalid_attr1 'd'
+  end
+
+  test "equal integer is not valid" do
+    @model.attr2 = 2
+    assert_invalid_attr1 2
+  end
+
+  test "greater date is not valid" do
+    today = Date.today
+    @model.attr2 = today
+    assert_invalid_attr1 today
+  end
+
+  test "greater string is not valid" do
+    @model.attr2 = 'c'
+    assert_invalid_attr1 'c'
   end
 
   #########

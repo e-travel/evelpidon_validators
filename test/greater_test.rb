@@ -18,7 +18,6 @@ class GreaterValidatorTest < ActiveSupport::TestCase
     assert_valid_attr1 3
     assert_valid_attr1 4
     assert_invalid_attr1 1
-    assert_invalid_attr1 2
   end
 
   test "greater date" do
@@ -27,7 +26,6 @@ class GreaterValidatorTest < ActiveSupport::TestCase
     assert_valid_attr1 today + 1
     assert_valid_attr1 today + 2
     assert_invalid_attr1 today - 1
-    assert_invalid_attr1 today
   end
 
   test "greater string" do
@@ -35,6 +33,21 @@ class GreaterValidatorTest < ActiveSupport::TestCase
     assert_valid_attr1 'd'
     assert_valid_attr1 'e'
     assert_invalid_attr1 'b'
+  end
+
+  test "equal integer is not valid" do
+    @model.attr2 = 2
+    assert_invalid_attr1 2
+  end
+
+  test "greater date is not valid" do
+    today = Date.today
+    @model.attr2 = today
+    assert_invalid_attr1 today
+  end
+
+  test "greater string is not valid" do
+    @model.attr2 = 'c'
     assert_invalid_attr1 'c'
   end
 

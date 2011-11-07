@@ -5,8 +5,9 @@ class LessValidatorTest < ActiveSupport::TestCase
 
   class ModelWithLessValidation
     include ActiveModel::Validations
-    attr_accessor :attr1, :attr2
+    attr_accessor :attr1, :attr2, :attr3
     validates :attr1, :less => { :than => :attr2 }
+    validates :attr3, :less => { :than => :attr2, :or_equal => true }
   end
 
   setup do
@@ -51,6 +52,22 @@ class LessValidatorTest < ActiveSupport::TestCase
     assert_invalid_attr1 'c'
   end
 
+  test "equal integer is valid if is_equal is true" do
+    @model.attr2 = 2
+    assert_valid_attr3 2
+  end
+
+  test "greater date is valid if is_equal is true" do
+    today = Date.today
+    @model.attr2 = today
+    assert_valid_attr3 today
+  end
+
+  test "greater string is valid if is_equal is true" do
+    @model.attr2 = 'c'
+    assert_valid_attr3 'c'
+  end
+
   #########
   protected
   #########
@@ -63,5 +80,15 @@ class LessValidatorTest < ActiveSupport::TestCase
   def assert_invalid_attr1(value)
     @model.attr1 = value
     assert_invalid_attribute @model, :attr1
+  end
+
+  def assert_valid_attr3(value)
+    @model.attr3 = value
+    assert_valid_attribute(@model, :attr3)
+  end
+
+  def assert_invalid_attr3(value)
+    @model.attr3 = value
+    assert_invalid_attribute @model, :attr3
   end
 end

@@ -6,7 +6,7 @@ module ActiveModel
       end
 
       def validate_each(record, attribute, value)
-        unless self.class.greater? value, record.send(options[:than])
+        unless self.class.greater? value, record.send(options[:than]) or (options[:or_equal] && value.eql?(record.send(options[:than])))
           record.errors.add(attribute, :greater, options)
         end
       end

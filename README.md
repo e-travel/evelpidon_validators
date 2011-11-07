@@ -17,41 +17,31 @@ already loaded.
 
 Add on your Gemfile :
 
-```ruby
-gem 'evelpidon_validators'
-```
+    gem 'evelpidon_validators'
 
 ### By hand
 
 On the console :
 
-```bash
-gem install evelpidon_validators
-```
+    gem install evelpidon_validators
 
 On your code :
 
-```ruby
-require 'evelpidon_validators'
-```
+    require 'evelpidon_validators'
 
 ## Usage
 
 Validators are *not* automatically loaded. You can require the validators you need either explicitly one-by-one
 or all of them. So for example :
 
-```ruby
-# Load only "Greater than" and "Less than" validators :
-require 'evelpidon_validators/greater'
-require 'evelpidon_validators/greater'
-```
+    # Load only "Greater than" and "Less than" validators :
+    require 'evelpidon_validators/greater'
+    require 'evelpidon_validators/greater'
 
 or
 
-```ruby
-# Load everything
-require 'evelpidon_validators/all'
-```
+    # Load everything
+    require 'evelpidon_validators/all'
 
 ### Enable client side validations support
 
@@ -62,10 +52,8 @@ Client-side validations work out of the box with Rails 3.1 (through the asset pi
 
 So for example the following should work :
 
-```
-//= require rails.validations
-//= require evelpidon_validators
-```
+    //= require rails.validations
+    //= require evelpidon_validators
 
 ## TODOs
 

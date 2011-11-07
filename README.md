@@ -43,7 +43,7 @@ or all of them. So for example :
 ```ruby
 # Load only "Greater than" and "Less than" validators :
 require 'evelpidon_validators/greater'
-require 'evelpidon_validators/greater'
+require 'evelpidon_validators/less'
 ```
 
 or

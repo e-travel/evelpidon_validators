@@ -62,7 +62,7 @@ Client-side validations work out of the box with Rails 3.1 (through the asset pi
 
 So for example the following should work :
 
-```
+```javascript
 //= require rails.validations
 //= require evelpidon_validators
 ```

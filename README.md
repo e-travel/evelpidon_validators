@@ -1,5 +1,7 @@
 # Evelpidon Validators (for Rails / ActiveModel / ActiveRecord)
 
+[![Build Status](https://secure.travis-ci.org/e-travel/evelpidon_validators.png)](http://travis-ci.org/e-travel/evelpidon_validators)
+
 Collection of various ActiveModel validators, alongside their client side implementation
 as ClientSideValidations::Middleware (see [ClientSideValidations](https://github.com/bcardarella/client_side_validations)
 for more info). Client side validations are optional and are enabled only if the client_side_validations gem is

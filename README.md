@@ -1,5 +1,6 @@
 # Evelpidon Validators (for Rails / ActiveModel / ActiveRecord)
 
+[![Project Status](http://stillmaintained.com/e-travel/evelpidon_validators.png)](http://stillmaintained.com/e-travel/evelpidon_validators) 
 [![Build Status](https://secure.travis-ci.org/e-travel/evelpidon_validators.png)](http://travis-ci.org/e-travel/evelpidon_validators)
 
 Collection of various ActiveModel validators, alongside their client side implementation

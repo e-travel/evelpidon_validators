@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "test-unit"
 
   s.add_runtime_dependency "activemodel"
+  s.add_runtime_dependency "credit_card_validator"
 end

@@ -1,5 +1,10 @@
 # Evelpidon Validators changelog
 
+## 0.4.0 / 2012-01-13
+
+* Fix for nested forms and sibling finding
+* Added CreditCardValidator
+
 ## 0.3.0 / 2011-12-29
 
 * Added AssociationValidator

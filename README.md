@@ -13,6 +13,7 @@ already loaded.
 * Different
 * Less
 * More
+* Associated
 * Credit Card
 
 ## Installation

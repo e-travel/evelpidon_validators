@@ -1,5 +1,9 @@
 # Evelpidon Validators changelog
 
+## 0.4.2 / 2012-01-16
+
+* Fixed type deprecation warning added in the wrong place
+
 ## 0.4.1 / 2012-01-16
 
 * Renamed credit card validator type option to type_attribute (type is deprecated)

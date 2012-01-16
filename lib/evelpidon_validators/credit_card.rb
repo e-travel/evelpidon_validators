@@ -7,6 +7,15 @@ end
 module ActiveModel
   module Validations
     class CreditCardValidator < EachValidator
+      def initialize(options)
+        if options[:type]
+          warn "The :type option has been deprecated, please use :type_attribute instead."
+          options[:type_attribute] ||= options[:type]
+        end
+
+        super
+      end
+
       def self.valid_credit_card?(number, type)
         if type
           ::CreditCardValidator::Validator.options[:allowed_card_types] = [type.underscore.to_sym]
@@ -15,10 +24,6 @@ module ActiveModel
       end
 
       def validate_each(record, attribute, value)
-        if options[:type]
-          warn "The :type option has been deprecated, please use :type_attribute instead."
-          options[:type_attribute] ||= options[:type]
-        end
         unless self.class.valid_credit_card? value, record.send(options[:type_attribute])
           record.errors.add(attribute, :credit_card, options)
         end

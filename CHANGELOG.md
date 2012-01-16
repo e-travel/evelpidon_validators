@@ -1,5 +1,10 @@
 # Evelpidon Validators changelog
 
+## 0.4.1 / 2012-01-16
+
+* Renamed credit card validator type option to type_attribute (type is deprecated)
+* Type is optional for a credit card validation
+
 ## 0.4.0 / 2012-01-13
 
 * Fix for nested forms and sibling finding

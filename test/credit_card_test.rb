@@ -14,6 +14,16 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
     @payment = Payment.new
   end
 
+  test "nil number" do
+    assert_invalid_card_type_and_number 'Visa', nil
+    assert_invalid_card_type_and_number 'MasterCard', nil
+    assert_invalid_card_type_and_number 'DinersClub', nil
+    assert_invalid_card_type_and_number 'Amex', nil
+    assert_invalid_card_type_and_number 'Discover', nil
+    assert_invalid_card_type_and_number 'Maestro', nil
+    assert_invalid_card_type_and_number nil, nil
+  end
+
   test "visa cards" do
     assert_valid_card_type_and_number 'Visa', '4111111111111111'
     assert_valid_card_type_and_number 'visa', '4111111111111111'

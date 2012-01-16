@@ -17,6 +17,8 @@ module ActiveModel
       end
 
       def self.valid_credit_card?(number, type)
+        return false if number.nil?
+
         if type
           ::CreditCardValidator::Validator.options[:allowed_card_types] = [type.underscore.to_sym]
         end

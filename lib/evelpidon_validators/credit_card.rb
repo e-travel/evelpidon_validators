@@ -13,6 +13,10 @@ module ActiveModel
       end
 
       def validate_each(record, attribute, value)
+        if options[:type]
+          warn "The :type option has been deprecated, please use :type_attribute instead."
+          options[:type_attribute] ||= options[:type]
+        end
         unless self.class.valid_credit_card? value, record.send(options[:type_attribute])
           record.errors.add(attribute, :credit_card, options)
         end

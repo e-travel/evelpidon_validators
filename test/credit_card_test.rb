@@ -17,6 +17,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   test "visa cards" do
     assert_valid_card_type_and_number 'Visa', '4111111111111111'
     assert_valid_card_type_and_number 'visa', '4111111111111111'
+    assert_valid_card_type_and_number nil, '4111111111111111'
 
     assert_invalid_card_type_and_number 'MasterCard', '4111111111111111'
     assert_invalid_card_type_and_number 'DinersClub', '4111111111111111'
@@ -28,6 +29,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   test "master card cards" do
     assert_valid_card_type_and_number 'MasterCard', '5555555555554444'
     assert_valid_card_type_and_number 'master_card', '5555555555554444'
+    assert_valid_card_type_and_number nil, '5555555555554444'
 
     assert_invalid_card_type_and_number 'Visa', '5555555555554444'
     assert_invalid_card_type_and_number 'DinersClub', '5555555555554444'
@@ -39,6 +41,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   test "diners club cards" do
     assert_valid_card_type_and_number 'DinersClub', '30569309025904'
     assert_valid_card_type_and_number 'diners_club', '30569309025904'
+    assert_valid_card_type_and_number nil, '30569309025904'
 
     assert_invalid_card_type_and_number 'Visa', '30569309025904'
     assert_invalid_card_type_and_number 'MasterCard', '30569309025904'
@@ -50,6 +53,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   test "amex cards" do
     assert_valid_card_type_and_number 'Amex', '371449635398431'
     assert_valid_card_type_and_number 'amex', '371449635398431'
+    assert_valid_card_type_and_number nil, '371449635398431'
 
     assert_invalid_card_type_and_number 'Visa', '371449635398431'
     assert_invalid_card_type_and_number 'MasterCard', '371449635398431'
@@ -61,6 +65,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   test "discover cards" do
     assert_valid_card_type_and_number 'Discover', '6011000990139424'
     assert_valid_card_type_and_number 'discover', '6011000990139424'
+    assert_valid_card_type_and_number nil, '6011000990139424'
 
     assert_invalid_card_type_and_number 'Visa', '6011000990139424'
     assert_invalid_card_type_and_number 'MasterCard', '6011000990139424'
@@ -72,6 +77,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   test "maestro cards" do
     assert_valid_card_type_and_number 'Maestro', '6759671431256542'
     assert_valid_card_type_and_number 'maestro', '6759671431256542'
+    assert_valid_card_type_and_number nil, '6759671431256542'
 
     assert_invalid_card_type_and_number 'Visa', '6759671431256542'
     assert_invalid_card_type_and_number 'MasterCard', '6759671431256542'

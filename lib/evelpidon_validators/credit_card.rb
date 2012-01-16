@@ -8,7 +8,9 @@ module ActiveModel
   module Validations
     class CreditCardValidator < EachValidator
       def self.valid_credit_card?(number, type)
-        ::CreditCardValidator::Validator.options[:allowed_card_types] = [(type || '').underscore.to_sym]
+        if type
+          ::CreditCardValidator::Validator.options[:allowed_card_types] = [type.underscore.to_sym]
+        end
         ::CreditCardValidator::Validator.valid?(number)
       end
 

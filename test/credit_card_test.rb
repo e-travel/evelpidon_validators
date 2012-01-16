@@ -6,7 +6,7 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
   class Payment
     include ActiveModel::Validations
     attr_accessor :card_type, :card_number
-    validates :card_number, :credit_card => { :type => :card_type }
+    validates :card_number, :credit_card => { :type_attribute => :card_type }
   end
 
   setup do

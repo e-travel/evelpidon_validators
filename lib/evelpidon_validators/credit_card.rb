@@ -13,7 +13,7 @@ module ActiveModel
       end
 
       def validate_each(record, attribute, value)
-        unless self.class.valid_credit_card? value, record.send(options[:type])
+        unless self.class.valid_credit_card? value, record.send(options[:type_attribute])
           record.errors.add(attribute, :credit_card, options)
         end
       end

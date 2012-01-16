@@ -21,12 +21,15 @@ module ActiveModel
 
         if type
           ::CreditCardValidator::Validator.options[:allowed_card_types] = [type.underscore.to_sym]
+        else
+          ::CreditCardValidator::Validator.options[:allowed_card_types] = nil
         end
         ::CreditCardValidator::Validator.valid?(number)
       end
 
       def validate_each(record, attribute, value)
-        unless self.class.valid_credit_card? value, record.send(options[:type_attribute])
+        type = record.send(options[:type_attribute]) if options[:type_attribute]
+        unless self.class.valid_credit_card? value, type
           record.errors.add(attribute, :credit_card, options)
         end
       end

@@ -96,6 +96,23 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
     assert_invalid_card_type_and_number 'Discover', '6759671431256542'
   end
 
+  test "type attribute option is optional" do
+    class PaymentWithNoTypeValidation
+      include ActiveModel::Validations
+      attr_accessor :card_type, :card_number
+      validates :card_number, :credit_card => true
+    end
+
+    @payment = PaymentWithNoTypeValidation.new
+
+    assert_valid_card_type_and_number 'Visa', '4111111111111111'
+    assert_valid_card_type_and_number 'MasterCard', '4111111111111111'
+    assert_valid_card_type_and_number 'DinersClub', '4111111111111111'
+    assert_valid_card_type_and_number 'Amex', '4111111111111111'
+    assert_valid_card_type_and_number 'Discover', '4111111111111111'
+    assert_valid_card_type_and_number 'Maestro', '4111111111111111'
+  end
+
   #########
   protected
   #########

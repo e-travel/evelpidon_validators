@@ -1,5 +1,10 @@
 # Evelpidon Validators changelog
 
+## 0.4.3 / 2012-01-16
+
+* Fixed bug with validation raising an error if number is nil.
+* Fixed Credit Card Validator type_attribute option is optional.
+
 ## 0.4.2 / 2012-01-16
 
 * Fixed type deprecation warning added in the wrong place

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "evelpidon_validators"
   s.version     = EvelpidonValidators::VERSION
   s.authors     = ["Nikos Dimitrakopoulos", "Eric Cohen"]
-  s.email       = ["n.dimitrakopoulos@pamediakopes.gr", "e.koen@pamediakopes.gr"]
+  s.email       = ["n.dimitrakopoulos@pamediakopes.gr", "eirc.eirc@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Useful ActiveModel validators}
   s.description = %q{Useful ActiveModel validators with ClientSideValidations support.}

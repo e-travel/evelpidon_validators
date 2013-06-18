@@ -1,6 +1,6 @@
 require 'credit_card_validator'
 
-if defined?(Rails) && Rails.env == 'development'
+if defined?(Rails) && !Rails.env.production?
   ::CreditCardValidator::Validator.options[:test_numbers_are_valid] = true
 end
 

@@ -1,5 +1,10 @@
 # Evelpidon Validators changelog
 
+## 0.4.4 / 2013-06-18
+
+* Test numbers are considered valid in all Rails environments except production.
+* Internal gem configuration changes.
+
 ## 0.4.3 / 2012-01-16
 
 * Fixed bug with validation raising an error if number is nil.

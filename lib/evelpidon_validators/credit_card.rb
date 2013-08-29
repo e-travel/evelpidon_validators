@@ -28,7 +28,7 @@ module ActiveModel
       end
 
       def self.valid_luhn?(number)
-        ::CreditCardValidator::Validator.verify_luhn(number)
+        number.nil? ? true : ::CreditCardValidator::Validator.verify_luhn(number)
       end
 
       def validate_each(record, attribute, value)

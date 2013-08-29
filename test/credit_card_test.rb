@@ -129,6 +129,9 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
     ).each do |cc_number|
       assert_valid_card_number cc_number
     end
+
+    assert_valid_card_number nil
+    assert_valid_card_number ''
   end
 
   #########

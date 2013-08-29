@@ -113,12 +113,35 @@ class CreditCardValidatorTest < ActiveSupport::TestCase
     assert_valid_card_type_and_number 'Maestro', '4111111111111111'
   end
 
+  test "luhn check only" do
+    class PaymentWithNoTypeValidation
+      include ActiveModel::Validations
+      attr_accessor :card_type, :card_number
+      validates :card_number, :credit_card => {:luhn_only => true}
+    end
+
+    @payment = PaymentWithNoTypeValidation.new
+
+    %w(
+      50339619890917 586824160825533338 6759411100000008 5641821111166669 6759560045005727054
+      3530111333300000 4111111111111111 5555555555554444 30569309025904 371449635398431
+      6011000990139424
+    ).each do |cc_number|
+      assert_valid_card_number cc_number
+    end
+  end
+
   #########
   protected
   #########
 
   def assert_valid_card_type_and_number(type, number)
     @payment.card_type = type
+    @payment.card_number = number
+    assert_valid_attribute @payment, :card_number
+  end
+
+  def assert_valid_card_number(number)
     @payment.card_number = number
     assert_valid_attribute @payment, :card_number
   end

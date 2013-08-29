@@ -27,10 +27,20 @@ module ActiveModel
         ::CreditCardValidator::Validator.valid?(number)
       end
 
+      def self.valid_luhn?(number)
+        ::CreditCardValidator::Validator.verify_luhn(number)
+      end
+
       def validate_each(record, attribute, value)
-        type = record.send(options[:type_attribute]) if options[:type_attribute]
-        unless self.class.valid_credit_card? value, type
-          record.errors.add(attribute, :credit_card, options)
+        if options[:luhn_only]
+          unless self.class.valid_luhn? value
+            record.errors.add(attribute, :credit_card, options)
+          end
+        else
+          type = record.send(options[:type_attribute]) if options[:type_attribute]
+          unless self.class.valid_credit_card? value, type
+            record.errors.add(attribute, :credit_card, options)
+          end
         end
       end
     end
@@ -40,7 +50,12 @@ end
 module ClientSideValidations::Middleware
   class CreditCard < Base
     def response
-      self.status = ActiveModel::Validations::CreditCardValidator.valid_credit_card?(request.params[:value], request.params[:type]) ? 200 : 404
+      if request.params[:luhn_only]
+        self.status = ActiveModel::Validations::CreditCardValidator.valid_luhn?(request.params[:value]) ? 200 : 404
+      else
+        self.status = ActiveModel::Validations::CreditCardValidator.valid_credit_card?(request.params[:value], request.params[:type]) ? 200 : 404
+      end
+
       super
     end
   end

@@ -1,5 +1,9 @@
 # Evelpidon Validators changelog
 
+## 0.5.1 / 2013-08-29
+
+* CreditCardValidator with `:luhn_only` true accepts nil values.
+
 ## 0.5.0 / 2013-08-29
 
 * CreditCardValidator learned the option of `:luhn_only` bypassing the actual cc type check.

@@ -1,5 +1,9 @@
 # Evelpidon Validators changelog
 
+## 0.6.0 - 06/09/2013
+
+* Minor changes to make gem compatible to Ruby 2.0.0 (and Rails 3.2 and Client Side Validations 3.2)
+
 ## 0.5.1 / 2013-08-29
 
 * CreditCardValidator with `:luhn_only` true accepts nil values.
